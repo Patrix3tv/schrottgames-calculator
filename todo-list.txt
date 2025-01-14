@@ -1,0 +1,4 @@
+ToDo List:
+- Import StarCalc (https://jugh3ad.github.io/StarCalc/) and change it with optional options like StarCalc (https://cocolin67.github.io/StarCalc/)
+- "Import" ScrapTools (https://muxa92.github.io/Scrap2Tools/#)
+- and collect ideas for the other games :D
