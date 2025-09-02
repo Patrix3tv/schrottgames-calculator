@@ -7,7 +7,7 @@
 </head>
 <body>
     <div class="center">
-        <h1 align="center">New Website</h1>
+        <h1 align="center">Your Calculators</h1>
 					<p align="center">Calculate all calculable things in the games of <a href="https://schrott-games.com" target="_blank">Schrott Games</a></p>
  	   <nav>
   	    <center>
@@ -15,17 +15,81 @@
   	      <div class=" dropdown">
   	        <button class="dropbtn">Scrap Games</button>
   	        <div class="dropdown-content">
-  	          <a href="#tool1a"><img src="/imgs/" />Scrap Clicker 1</a>
-  	          <a href="#tool1b"><img src="/imgs/" />Scrap Clicker 2</a>
-  	          <a href="#tool1c"><img src="/imgs/" />Scrap Collector</a>
-  	          <a href="#tool1d"><img src="/imgs/" />ScrapTD</a>
+  	          <a href="#Sc1"><img src="/imgs/" />Scrap Clicker 1</a>
+  	          <a href="#Sc2"><img src="/imgs/" />Scrap Clicker 2</a>
+  	          <a href="#SCo"><img src="/imgs/" />Scrap Collector</a>
+  	          <a href="#TD"><img src="/imgs/" />ScrapTD</a>
   	        </div>
   	      </div>
-  	      <a href="#tool2"><img src="/imgs/" />GPS Tracker</a>
-  	      <a href="#tool2">Practible Sites</a>
+  	      <a href="#GPS"><img src="/imgs/" />GPS Tracker</a>
+  	      <a href="#others">Practible Sites</a>
   	    </center>
     </nav>
     <p>Website is currently under construction.</p>
+	<br>
+	<h1 id="GPS">GPS Tracker</h1>
+	<br>
+	
+	<form id="GPSForm">
+		<label>Fields in Level:</label>
+		<input type="number" id="FiL" min="0"><br><br>
+
+		<label>Level:</label>
+		<input type="number" id="lvl" min="1"><br><br>
+
+		<input type="submit" value="Submit">
+	</form>
+
+	<br><label>Total Fields: <span id="answer">---</span></label>
+	<br><label>Percent: <span id="percent">---</span>%</label>
+
+	<script>
+		const xpTable = [0, 100, 200, 400, 800, 1000];
+
+	document.getElementById("lvl").addEventListener("input", function() {
+		let lvl = parseInt(this.value);
+		let maxXP;
+
+		if (lvl <= 1 || isNaN(lvl)) {
+			maxXP = 0;
+		} else if (lvl <= 6) {
+			maxXP = xpTable[lvl - 1] - xpTable[lvl - 2];
+		} else {
+			maxXP = 1000 + 100 * (lvl - 6) - (1000 + 100 * (lvl - 7));
+		}
+
+		document.getElementById("FiL").max = maxXP;
+		//document.getElementById("FiL").value = ""; // optional: reset input
+	});
+
+		document.getElementById("GPSForm").addEventListener("submit", function(event) {
+        event.preventDefault(); // Dont refresh website
+		
+		let lvl = parseInt(document.getElementById("lvl").value);
+        let y = parseInt(document.getElementById("FiL").value);
+        let totalXP = 0;
+		let xpTable = [0, 100, 200, 400, 800, 1000];
+
+		if (lvl <= 6) {
+			for (let i = 1; i < lvl; i++) {
+				totalXP += xpTable[i];
+			}
+		} else {
+			for (let i = 1; i <= 6; i++) {
+				totalXP += xpTable[i];
+			}
+			for (let i = 7; i < lvl; i++) {
+				totalXP += 1000 + 100 * (i - 6);
+			}
+		}
+
+		totalXP += y;
+
+        document.getElementById("answer").textContent = totalXP;
+		document.getElementById("percent").textContent = (totalXP / 34721852472) * 100;
+    });
+	</script>
+
   	</div>
 </body>
 </html>
