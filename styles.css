@@ -10,11 +10,8 @@ a {
 
 body {
   background-color: blue;
-  margin: 50px;
-  width: 1000px;
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 50px;
+  margin: 0;
+  width: auto;
   position: relative;
 }
 
@@ -29,13 +26,15 @@ li {
 }
 
 div.center {
-  height: 100vh;
-  left: 0px;
-  top: 0px;
-  width: 1000px;
+  max-width: 1500px;
+  width: 100%;
   background: #ffffff;
-  position: absolute;
-  z-index: -1
+  margin: 0 auto;
+  min-height: 205vh;
+  box-sizing: border-box;
+  z-index: -1;
+  padding-left: 50px;
+  padding-right: 50px;
 }
 
 /*DropDown Menu*/
